@@ -1,26 +1,45 @@
-import React from "react";
-import { AppContext } from "../../../Context";
 import { AllInfoContainer, AllInfoGridContainer } from "../AllInfoContainer";
 import { GraphContainer } from "../GraphContainer";
 import { MainTextContainer } from "../MainTextContainer";
-import { PaginationButtons } from "../PaginationButtons";
 import { TableContainer } from "../TableContainer";
-import { graphExportConfig } from "../../../utils/graphConfig";
+import { WrapperContainer2 } from "../WrapperContainers";
 
 const HomeInfoContainer = () => {
-    const context = React.useContext(AppContext)
+    const array1 = {
+        title: "Ofertas de empleo registradas (total red de prestadores), ofertas de empleo registradas (SISE*), buscadores de empleo registrados (SISE*) y número de colocaciones (SISE*)",
+        year: ["abril-2023", "abril-2024"],
+        month: 9,
+        grapLabelsType: "ofertasDeEmpleoRegistradas",
+        graphType: "bar",
+        description: "",
+        values: [
+            [181600, 14750, 65075, 42080],
+            [182025, 16381, 80082, 50449],
+        ],
+    };
 
-    const array = context.graphValues;
+    // const array2 = { 
+    //     title: "Número de ofertas de empleo registradas por 23 ciudades  - áreas metropolitanas",
+    //     year: "Departamentos",
+    //     month: 9,
+    //     grapLabelsType: "areaMetropolitana",
+    //     graphType: "line",
+    //     description: "",
+    //     values: [62066, 21871, 10533, 5118, 4553, 3321, 2494, 1729, 1636, 1327, 1165, 1004, 994, 849, 621, 562, 515, 440, 297, 203, 174, 166, 137, 76],
+    // };
 
     return(
         <AllInfoContainer>
-            <AllInfoGridContainer>
-                <MainTextContainer item={array}/>
+            <AllInfoGridContainer className="grid-1">
+                <GraphContainer array={array1} index="0"/>
                 
-                <GraphContainer array={array}/>
+                {/* <GraphContainer array={array2} index="1"/> */}
             </AllInfoGridContainer>
 
-            <PaginationButtons/>
+            <WrapperContainer2 paddingHorizontal={20} padding={0}>
+                <MainTextContainer/>
+            </WrapperContainer2>
+
             <TableContainer/>
         </AllInfoContainer>
     );

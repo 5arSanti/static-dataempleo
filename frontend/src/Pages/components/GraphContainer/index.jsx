@@ -1,27 +1,31 @@
-import React from "react";
-import { AppContext } from "../../../Context";
 import { WrapperContainer1, WrapperContainer2 } from "../WrapperContainers";
 import { Graph } from "./Graph";
 import { SubTitle } from "../SubTitle";
 
-import { months } from "../../../utils/dateFunctions";
-
 import { graphValuesConfig } from "../../../utils/graphConfig";
+import { TextCard } from "../TextComponents";
 
-const GraphContainer = ({array, onConfig=graphValuesConfig}) => {
+import "./styles.css"
+
+const GraphContainer = ({array, onConfig=graphValuesConfig, index=""}) => {
     const values = onConfig(array);
 
     return(
-        <WrapperContainer2 padding={0} flexDirection="column">
-            <WrapperContainer1 flexDirection="column" gap={15}>
+        <div className="graph-overflow-container">
+            <WrapperContainer2 padding={15} flexDirection="column" justifyContent="center" alignItems="center">
                 <SubTitle textAlign="center">
-                    {array?.title == "" ? "Gráfica" : array?.title} - {months[array?.month]} del {array?.year}
+                    {array?.title}
                 </SubTitle>
-                
-                <Graph values={values}/>
-            </WrapperContainer1>            
-        </WrapperContainer2>
-        
+
+                <Graph values={values} index={index}/>
+
+                <WrapperContainer2 flexDirection="column" gap={0} padding={0}>
+                    <TextCard>Total Nacional</TextCard>
+                    <TextCard>*SISE: Sistema de Información del Servicio P&uacute;blico de Empleo</TextCard>
+                </WrapperContainer2>
+         
+            </WrapperContainer2>
+        </div>        
     );
 }
 

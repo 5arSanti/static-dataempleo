@@ -20,7 +20,7 @@ const NavButtons = ({className="idioma-icon-barra-superior-govco"}) => {
             return(
                 <>
 
-                    <Link to={"/home"} className={`${className}`}>
+                    {/* <Link to={"/home"} className={`${className}`}>
                         Home
                     </Link>
                     <Link to={"/dashboard"} className={`${className}`}>
@@ -37,7 +37,7 @@ const NavButtons = ({className="idioma-icon-barra-superior-govco"}) => {
                         onClick={context.handleLogout}
                     >
                         Cerrar Sesión
-                    </button>          
+                    </button>           */}
                 </>
 
             );
@@ -46,7 +46,7 @@ const NavButtons = ({className="idioma-icon-barra-superior-govco"}) => {
 
     return(
         <div className="nav-buttons-container">
-            {handleNavButtons()}
+            {/* {handleNavButtons()} */}
         </div>
     );
 

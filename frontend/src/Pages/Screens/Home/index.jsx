@@ -1,18 +1,21 @@
-
 import { Title } from "../../components/Title";
 import { HomeInfoContainer } from "../../components/HomeInfoContainer";
 
 import "./styles.css"
-import { AuthWrapper } from "../../components/AuthWrapper";
+import React from "react";
+import { scrollToValue } from "../../../utils/scrollToValue";
 
 const Home = () => {
+    React.useEffect(() => {
+        scrollToValue()
+    },[])
     return (
-        <AuthWrapper>
+        <>
             <Title>
                 DATAEMPLEO
             </Title>
             <HomeInfoContainer/>
-        </AuthWrapper>
+        </>
     );
 }
 

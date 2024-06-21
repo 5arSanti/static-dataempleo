@@ -4,12 +4,11 @@ import { AppContext } from '../../../../Context';
 
 import "./styles.css"
 
-const Graph = ({values={}, index=""}) => {
+const Graph = ({values, index=""}) => {
     const context = React.useContext(AppContext);
 
-    const colors = ["rgba(255, 63, 100, .5)", "rgba(234,28,251,.5)", "rgba(28,123,251,.5)"];
+    const colors = context.activeHighContrast ? ["#FFF", "#FFF", "#FFF"] :  ["rgba(90,91,93, .6)", "rgba(224,22,30, .6)", "rgba(28,123,251,.5)"];
     let highContrastStyle = context.activeHighContrast ? "#FFF" : "#000";
-
 
     React.useEffect(() => {
         // Configuración de los datos
@@ -55,6 +54,7 @@ const Graph = ({values={}, index=""}) => {
                 },
             },
             color: highContrastStyle,
+            maintainAspectRatio: false,
                    
         };
 
@@ -72,7 +72,9 @@ const Graph = ({values={}, index=""}) => {
     }, [values, highContrastStyle, index]);
 
     return (
-        <canvas id={`myChart${index}`}></canvas>
+        <div className='graph-container'>
+            <canvas id={`myChart${index}`}></canvas>
+        </div>
     )
 };
 
